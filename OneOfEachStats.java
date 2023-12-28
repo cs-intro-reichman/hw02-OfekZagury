@@ -9,21 +9,83 @@ import java.util.Random;
  */
 public class OneOfEachStats {
 	public static void main (String[] args) {
-		// Gets the two command-line arguments
-		int T = Integer.parseInt(args[0]);
-		int seed = Integer.parseInt(args[1]);
-		// Initailizes a random numbers generator with the given seed value
-        Random generator = new Random(seed);  
-		
-		//// In the previous version of this program, you used a statement like:
-		//// double rnd = Math.random();
-		//// Where "rnd" is the variable that stores the generated random value.
-		//// In this version of the program, replace this statement with:
-		//// double rnd = generator.nextDouble();
-		//// This statement will generate a random value in the range [0,1),
-		//// just like you had in the previous version, except that the 
-		//// randomization will be based on the given seed.
-		//// This is the only change that you have to do in the program.
+
+		double families = Double.parseDouble(args[0]);
+		int seed = Integer.parseInt(args[1]); 
+				// Gets the two command-line arguments
+		        // Initailizes a random numbers generator with the given seed value
+		Random generator = new Random(seed); 
+				//// In the previous version of this program, you used a statement like:
+		        //// double rnd = Math.random();
+		       //// Where "rnd" is the variable that stores the generated random value.
+	         	//// In this version of the program, replace this statement with:
+		        //// double rnd = generator.nextDouble();
+		       //// This statement will generate a random value in the range [0,1),
+	        	//// just like you had in the previous version, except that the 
+		       //// randomization will be based on the given seed.
+		       //// This is the only change that you have to do in the program.
+
+		boolean isBoy; boolean isGirl;
+		double gender = 0.0;
+		int counts2 = 0; int counts3 = 0; int counts4orMore = 0;
+		int counter = 0;
+		double sumOfKids = 0.0;
+
+		for (int i = 0; i < families; i++) {
+
+			counter = 0;
+		    isBoy = false;
+		    isGirl = false;
 		    
+		   while (!isBoy || !isGirl) {
+
+		       gender = generator.nextDouble();
+
+			   if (gender < 0.5) {
+			    isGirl = true;
+
+		       } else 
+			       isBoy = true;
+
+		       counter++; 
+		       sumOfKids++;
+
+            }
+
+		   if (counter == 2) {
+			counts2++;
+		     } else if (counter == 3) {
+			    counts3++;
+		       } else 
+			      counts4orMore++;
+		
+        }
+
+            int mostCommon = counts2;
+            String theMostCommon = "2";
+            
+            if (counts3 > counts2) {
+            	mostCommon = counts3;
+            	theMostCommon = "3";
+            }
+
+            if (counts4orMore > mostCommon) {
+            	mostCommon = counts4orMore;
+            	theMostCommon = "4 or more";
+            }
+
+            double average = (double)(sumOfKids / families);
+            
+			System.out.println("average: " + average + " children to get at least one of each gender.");
+			System.out.println("Number of families with 2 children: " + counts2);
+			System.out.println("Number of families with 3 children: " + counts3);
+			System.out.println("Number of families with 4 children: " + counts4orMore);
+			System.out.println("The most common number of children is: " + theMostCommon + ".");
+
+		}
 	}
-}
+	
+		
+
+		
+

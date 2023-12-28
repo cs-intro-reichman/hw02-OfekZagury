@@ -3,6 +3,20 @@
  */
 public class DamkaBoard {
 	public static void main(String[] args) {
-		//// Put your code here
+		
+		int userInt = Integer.parseInt(args[0]);
+
+		for (int i = 0; i < userInt; i++){
+			
+			for (int j = 0; j < userInt; j++){
+
+				if (i % 2 == 0){
+					System.out.print("* ");
+				} else {
+					System.out.print(" *");
+				}
+		}  
+		    System.out.println();
+		}
 	}
 }

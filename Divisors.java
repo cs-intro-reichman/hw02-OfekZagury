@@ -4,5 +4,12 @@
 public class Divisors {
 	public static void main (String[] args) {
 		//// Put your code here
+		int userInt = Integer.parseInt(args[0]);
+		for (int count = 1; count <= userInt; count++) {
+			if (userInt % count == 0) {
+				System.out.println(count);
+			}
+		}
+
 	}
 }
